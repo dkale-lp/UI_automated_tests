@@ -1,0 +1,22 @@
+{
+  "name": "ui-automated_tests",
+  "version": "1.0.0",
+  "description": "Cypress io",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Almond-Systems/UI-automated_tests.git"
+  },
+  "author": "Shahin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Almond-Systems/UI-automated_tests/issues"
+  },
+  "homepage": "https://github.com/Almond-Systems/UI-automated_tests#readme",
+  "dependencies": {
+    "cypress": "^4.9.0"
+  }
+}
