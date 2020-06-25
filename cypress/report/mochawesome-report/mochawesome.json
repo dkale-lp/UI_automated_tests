@@ -1,0 +1,107 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-06-25T09:46:44.531Z",
+    "end": "2020-06-25T09:47:16.474Z",
+    "duration": 31943,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "0ba0fdaf-b076-4d26-a3b0-0420c106d8c1",
+      "title": "",
+      "fullFile": "cypress/integration/botAnalytics.spec.js",
+      "file": "cypress/integration/botAnalytics.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6f654429-0a66-401e-a667-3f1d57b2ff7c",
+          "title": "Bot Analytics",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should verify Bot Analytics",
+              "fullTitle": "Bot Analytics should verify Bot Analytics",
+              "timedOut": null,
+              "duration": 31819,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.login();\ncy.xpath(\"//h3[text()='Bot Analytics']\").click();\ncy.waitForDataAnalyticsToLoad(60000);\ncy.xpath('//*[@name=\"search\"]').type(\"sdd{enter}\");\ncy.xpath('//*[@title=\"sdd\"]').click();",
+              "err": {},
+              "uuid": "d0b640f9-c2fc-4259-ba50-88b2bfcf46bc",
+              "parentUUID": "6f654429-0a66-401e-a667-3f1d57b2ff7c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d0b640f9-c2fc-4259-ba50-88b2bfcf46bc"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 31819,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.1.1"
+    },
+    "marge": {
+      "options": {
+        "charts": false,
+        "html": true,
+        "json": true,
+        "reportDir": "cypress/report/mochawesome-report",
+        "overwrite": true,
+        "inline": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}

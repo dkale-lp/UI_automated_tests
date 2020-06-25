@@ -23,3 +23,34 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+import 'cypress-wait-until';
+
+Cypress.Commands.add("waitForDataAnalyticsToLoad", (settimeout) => {
+	cy.route({
+		method: 'GET',
+		url: '/bot-platform-manager-0.1/chatbots',
+	}).as('chatbot')
+	cy.wait('@chatbot', {
+		timeout: settimeout
+	})
+});
+
+Cypress.Commands.add("login", () => {
+	cy.server()
+	cy.visit('/')
+	cy.xpath('//*[@type="email"]').type('agent1@gmail.com')
+	cy.xpath('//*[@type="password"]').type('Test1234')
+	cy.xpath('//*[@type="submit"]').click()
+	cy.route({
+		method: 'POST',
+		url: '/bot-platform-manager-0.1/login'
+	}).as('login')
+	cy.route({
+		method: 'GET',
+		url: '/bot-platform-manager-0.1/botLanguage/'
+	}).as('botLanguage')
+	cy.wait('@botLanguage', {
+		timeout: 180000
+	})
+})
