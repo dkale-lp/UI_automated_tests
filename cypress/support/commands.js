@@ -26,16 +26,6 @@
 
 import 'cypress-wait-until';
 
-Cypress.Commands.add("waitForDataAnalyticsToLoad", (settimeout) => {
-	cy.route({
-		method: 'GET',
-		url: '/bot-platform-manager-0.1/chatbots',
-	}).as('chatbot')
-	cy.wait('@chatbot', {
-		timeout: settimeout
-	})
-});
-
 Cypress.Commands.add("login", () => {
 	cy.server()
 	cy.visit('/')
@@ -54,3 +44,53 @@ Cypress.Commands.add("login", () => {
 		timeout: 180000
 	})
 })
+
+Cypress.Commands.add("waitForDataAnalyticsToLoad", (settimeout) => {
+	cy.route({
+		method: 'GET',
+		url: '/bot-platform-manager-0.1/chatbots',
+	}).as('chatbot')
+	cy.wait('@chatbot', {
+		timeout: settimeout
+	})
+});
+
+Cypress.Commands.add('waitForCBLoad', ()=> {
+	cy.route({
+		method:'GET',
+		url:'bot-platform-manager-0.1/chatbots?filterByTransferGroup=true'
+	}).as('cbWait')
+	cy.wait('@cbWait', {
+		timeout: 120000
+	})
+})
+
+Cypress.Commands.add('waitForInteraction',()=>{
+	cy.route({
+		method:'GET',
+		url:'bot-platform-manager-0.1/chat/*/interaction/'
+	}).as('loadinteraction')
+	cy.wait('@loadinteraction', {
+		timeout: 120000		
+	})
+})
+
+Cypress.Commands.add('waitForConfig',()=>{
+	cy.route({
+		method:'GET',
+		url:'botservice-0.1/botcentral/debugger/*'
+	}).as('config')
+	cy.wait('@config', {
+		timeout: 120000		
+	})
+})
+Cypress.Commands.add('waitForCalendar',()=>{
+	cy.route({
+		method:'GET',
+		url:'/bot-platform-manager-0.1/auth/analytics/**'
+	}).as('config')
+	cy.wait('@config', {
+		timeout: 120000		
+	})
+})
+

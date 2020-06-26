@@ -5,7 +5,7 @@
 	"pluginsFile": "cypress/plugins/index.js",
 	"screenshotsFolder": "cypress/report/screenshots/",
 	"supportFile": "cypress/support/index.js",
-	"baseUrl": "https://va-a.botplatform.liveperson.net/",
+	"baseUrl": "https://va-a.botplatform.liveperson.net/#",
 	"reporter": "mochawesome",
 	"reporterOptions": {
 		"charts": false,
