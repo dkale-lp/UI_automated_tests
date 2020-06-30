@@ -3,10 +3,12 @@ require('cypress-xpath')
 var randomNumber = Math.floor(Math.random() * (999 - 100) + 100);
 var botName = "Automation_Bot_" + randomNumber;
 describe('Bot Analytics', function() {
-	it('Create bot', function() {
+	it('Create bot - check matched and unmatched intents', function() {
+		// login 
 		cy.login();
 		cy.xpath("//h3[text()='Conversation Builder']").click()
 		cy.waitForCBLoad()
+		//create bot
 		cy.get('[id="bna-create-bot"]').click()
 		cy.xpath('//*[@class="bot_name" and text()="Custom Bot"]').click()
 		cy.get('[name="name"]').type(botName)
@@ -14,6 +16,7 @@ describe('Bot Analytics', function() {
 		cy.get('[id="createbot_btn-save"]').click()
 		cy.waitForInteraction().its('status').should('eq', 200)
 		cy.waitForConfig()
+		// enter intents in preview
 		cy.xpath('//button[text()="Preview"]').click()
 		var phrases = ['hi', 'hello', 'Kakashi', 'Hatake', 'Sensei', 'Copy Ninja',
 			'kopi', 'Itachi', 'Konohamaru', 'Naruto', 'Sasuke', 'Tsunade', 'Hashirama',
@@ -30,13 +33,17 @@ describe('Bot Analytics', function() {
 					cy.wrap($body).find('.send-button').click()
 				}
 			})
+		// close button in preview
 		cy.get('[class="b"]').click()
+		// back to home page
 		cy.xpath("//span[text()='Back']").click()
 		cy.waitForCBLoad()
 		cy.xpath("//span[text()='Back']").click()
+		// goto bot analytics
 		cy.xpath("//h3[text()='Bot Analytics']").click()
 		cy.waitForDataAnalyticsToLoad(180000)
 		cy.xpath('//*[@name="search"]').type(botName + "{enter}")
+		// set last 7 days in date picker
 		cy.xpath('//*[@class="datatable-body-cell-label"]').first().click()
 		cy.waitUntil(() =>
 			cy
@@ -51,11 +58,24 @@ describe('Bot Analytics', function() {
 		cy.xpath('//*[@class="mat-option-text" and contains(text(),"Last Seven Days")]').click()
 		cy.get('[id="date-btn-submit"]').click()
 		cy.waitForCalendar()
+		// goto intents page in bot analytics
 		cy.xpath("//span[text()='Intents']").click()
 		cy.xpath("//a[contains(text(),' Unmatched Phrases ')]").click()
 		cy.waitForCalendar()
 		cy.get('[class="datatable-icon-skip"]').click()
-		cy.wait(60000)
+		// check if the second page in unmatched phrases has this text
+		cy.xpath("//span[text()='21-25']")
+		//delete the bot
+		cy.get('[class="bc-more-icon-round"]').click()
+		cy.xpath("//a[text()='Bot Settings']").click()
+		cy.wait('@loadinteraction', {
+			timeout: 120000
+		})
+		cy.xpath("//h4[text()='More Settings']").click()
+		cy.get('[aria-label="deleteBot"]').click()
+		cy.get('[class="btn btn-primary"]').click()
+		cy.waitForCBLoad()
+
 	})
 
 })
