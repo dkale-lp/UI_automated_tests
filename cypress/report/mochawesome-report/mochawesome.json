@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2020-06-25T09:46:44.531Z",
-    "end": "2020-06-25T09:47:16.474Z",
-    "duration": 31943,
+    "start": "2020-07-01T08:52:22.628Z",
+    "end": "2020-07-01T08:56:39.504Z",
+    "duration": 256876,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "0ba0fdaf-b076-4d26-a3b0-0420c106d8c1",
+      "uuid": "e8992173-9b80-423f-b494-3218f818aeff",
       "title": "",
       "fullFile": "cypress/integration/botAnalytics.spec.js",
       "file": "cypress/integration/botAnalytics.spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "6f654429-0a66-401e-a667-3f1d57b2ff7c",
+          "uuid": "b0b8233a-70ad-4db9-9038-e1aad999e54d",
           "title": "Bot Analytics",
           "fullFile": "",
           "file": "",
@@ -35,32 +35,32 @@
           "afterHooks": [],
           "tests": [
             {
-              "title": "should verify Bot Analytics",
-              "fullTitle": "Bot Analytics should verify Bot Analytics",
+              "title": "Create bot - check matched and unmatched intents",
+              "fullTitle": "Bot Analytics Create bot - check matched and unmatched intents",
               "timedOut": null,
-              "duration": 31819,
+              "duration": 256603,
               "state": "passed",
               "speed": "slow",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "cy.login();\ncy.xpath(\"//h3[text()='Bot Analytics']\").click();\ncy.waitForDataAnalyticsToLoad(60000);\ncy.xpath('//*[@name=\"search\"]').type(\"sdd{enter}\");\ncy.xpath('//*[@title=\"sdd\"]').click();",
+              "code": "// login \ncy.login();\ncy.xpath(\"//h3[text()='Conversation Builder']\").click();\ncy.waitForCBLoad(); //create bot\ncy.get('[id=\"bna-create-bot\"]').click();\ncy.xpath('//*[@class=\"bot_name\" and text()=\"Custom Bot\"]').click();\ncy.get('[name=\"name\"]').type(botName);\ncy.xpath('//textarea[@name=\"description\"]').type('Automation_Bot_Desc');\ncy.get('[id=\"createbot_btn-save\"]').click();\ncy.waitForInteraction().its('status').should('eq', 200);\ncy.waitForConfig(); // enter intents in preview\ncy.xpath('//button[text()=\"Preview\"]').click();\nvar phrases = ['hi', 'hello', 'Kakashi', 'Hatake', 'Sensei', 'Copy Ninja', 'kopi', 'Itachi', 'Konohamaru', 'Naruto', 'Sasuke', 'Tsunade', 'Hashirama', 'Madara', 'Sai', 'Sakumo', 'white fang', 'yellow flash', 'minato', 'jiraiya', 'shikamaru', 'yahiko', 'konan', 'nagato', 'nishinoya', 'shoyo', 'kageyama'];\ncy.get('[id=\"previewpanel\"]').then(function ($iframe) {\n  var $jbody = $iframe.contents().find('body');\n  var $body = $jbody[0];\n  for (var i = 0; i < phrases.length; i++) {\n    cy.wrap($body).find('.user-input_cls').type(phrases[i]);\n    cy.wrap($body).find('.send-button').click();\n  }\n}); // close button in preview\ncy.get('[class=\"b\"]').click(); // back to home page\ncy.xpath(\"//span[text()='Back']\").click();\ncy.waitForCBLoad();\ncy.xpath(\"//span[text()='Back']\").click(); // goto bot analytics\ncy.xpath(\"//h3[text()='Bot Analytics']\").click();\ncy.waitForDataAnalyticsToLoad(180000);\ncy.xpath('//*[@name=\"search\"]').type(botName + \"{enter}\"); // set last 7 days in date picker\ncy.xpath('//*[@class=\"datatable-body-cell-label\"]').first().click();\ncy.waitUntil(function () {\n  return cy.get(\"[id='button_date']\").should('be.visible');\n}, {\n  timeout: 10000,\n  interval: 1000,\n  errorMsg: 'Datepicker ele not visible '\n});\ncy.get(\"[id='button_date']\").click();\ncy.xpath('//label[text()=\"Date range\"]/..//*[@role=\"combobox\"]').click();\ncy.xpath('//*[@class=\"mat-option-text\" and contains(text(),\"Last Seven Days\")]').click();\ncy.get('[id=\"date-btn-submit\"]').click();\ncy.waitForCalendar(); // goto intents page in bot analytics\ncy.xpath(\"//span[text()='Intents']\").click();\ncy.xpath(\"//a[contains(text(),' Unmatched Phrases ')]\").click();\ncy.waitForCalendar();\ncy.get('[class=\"datatable-icon-skip\"]').click(); // check if the second page in unmatched phrases has this text\ncy.xpath(\"//span[text()='21-25']\"); //delete the bot\ncy.get('[class=\"bc-more-icon-round\"]').click();\ncy.xpath(\"//a[text()='Bot Settings']\").click();\ncy.wait('@loadinteraction', {\n  timeout: 120000\n});\ncy.xpath(\"//h4[text()='More Settings']\").click();\ncy.get('[aria-label=\"deleteBot\"]').click();\ncy.get('[class=\"btn btn-primary\"]').click();\ncy.waitForCBLoad();",
               "err": {},
-              "uuid": "d0b640f9-c2fc-4259-ba50-88b2bfcf46bc",
-              "parentUUID": "6f654429-0a66-401e-a667-3f1d57b2ff7c",
+              "uuid": "11c299f8-93c5-43a6-b1aa-dd117eacf348",
+              "parentUUID": "b0b8233a-70ad-4db9-9038-e1aad999e54d",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "d0b640f9-c2fc-4259-ba50-88b2bfcf46bc"
+            "11c299f8-93c5-43a6-b1aa-dd117eacf348"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 31819,
+          "duration": 256603,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
