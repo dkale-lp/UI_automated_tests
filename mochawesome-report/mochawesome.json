@@ -1,0 +1,267 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 7,
+    "passes": 6,
+    "pending": 0,
+    "failures": 1,
+    "start": "2020-06-25T08:37:56.701Z",
+    "end": "2020-06-25T08:38:45.436Z",
+    "duration": 48735,
+    "testsRegistered": 9,
+    "passPercent": 66.66666666666666,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 2,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "72a11f9f-a4b3-4857-8a8e-6de655cc2b22",
+      "title": "",
+      "fullFile": "cypress/integration/examples/actions.spec.js",
+      "file": "cypress/integration/examples/actions.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "122824e9-8095-43bc-92ec-4ba4da5d8d02",
+          "title": "Actions",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": ".type() - type into a DOM element",
+              "fullTitle": "Actions .type() - type into a DOM element",
+              "timedOut": null,
+              "duration": 6464,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// https://on.cypress.io/type\ncy.get('.action-email').type('fake@email.com').should('have.value', 'fake@email.com') // .type() with special character sequences\n.type('{leftarrow}{rightarrow}{uparrow}{downarrow}').type('{del}{selectall}{backspace}') // .type() with key modifiers\n.type('{alt}{option}') //these are equivalent\n.type('{ctrl}{control}') //these are equivalent\n.type('{meta}{command}{cmd}') //these are equivalent\n.type('{shift}') // Delay each keypress by 0.1 sec\n.type('slow.typing@email.com', {\n  delay: 100\n}).should('have.value', 'slow.typing@email.com');\ncy.get('.action-disabled') // Ignore error checking prior to type\n// like whether the input is visible or disabled\n.type('disabled error checking', {\n  force: true\n}).should('have.value', 'disabled error checking');",
+              "err": {},
+              "uuid": "5b06726a-2006-4e79-a0e3-86d5e6144779",
+              "parentUUID": "122824e9-8095-43bc-92ec-4ba4da5d8d02",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": ".focus() - focus on a DOM element",
+              "fullTitle": "Actions .focus() - focus on a DOM element",
+              "timedOut": null,
+              "duration": 1047,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// https://on.cypress.io/focus\ncy.get('.action-focus').focus().should('have.class', 'focus').prev().should('have.attr', 'style', 'color: orange;');",
+              "err": {},
+              "uuid": "372ec927-0d6d-48c0-8edf-6f691dd594a0",
+              "parentUUID": "122824e9-8095-43bc-92ec-4ba4da5d8d02",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": ".blur() - blur off a DOM element",
+              "fullTitle": "Actions .blur() - blur off a DOM element",
+              "timedOut": null,
+              "duration": 899,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// https://on.cypress.io/blur\ncy.get('.action-blur').type('About to blur').blur().should('have.class', 'error').prev().should('have.attr', 'style', 'color: red;');",
+              "err": {},
+              "uuid": "37a30923-5755-4436-a488-dda798817da7",
+              "parentUUID": "122824e9-8095-43bc-92ec-4ba4da5d8d02",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": ".clear() - clears an input or textarea element",
+              "fullTitle": "Actions .clear() - clears an input or textarea element",
+              "timedOut": null,
+              "duration": 1135,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// https://on.cypress.io/clear\ncy.get('.action-clear').type('Clear this text').should('have.value', 'Clear this text').clear().should('have.value', '');",
+              "err": {},
+              "uuid": "0e3f3b3d-eb9d-4808-989c-25f674f01bf5",
+              "parentUUID": "122824e9-8095-43bc-92ec-4ba4da5d8d02",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": ".submit() - submit a form",
+              "fullTitle": "Actions .submit() - submit a form",
+              "timedOut": null,
+              "duration": 944,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// https://on.cypress.io/submit\ncy.get('.action-form').find('[type=\"text\"]').type('HALFOFF');\ncy.get('.action-form').submit().next().should('contain', 'Your form has been submitted!');",
+              "err": {},
+              "uuid": "388db138-0b01-456e-a158-eee4f46db1fc",
+              "parentUUID": "122824e9-8095-43bc-92ec-4ba4da5d8d02",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": ".click() - click on a DOM element",
+              "fullTitle": "Actions .click() - click on a DOM element",
+              "timedOut": null,
+              "duration": 3001,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// https://on.cypress.io/click\ncy.get('.action-btn').click(); // You can click on 9 specific positions of an element:\n//  -----------------------------------\n// | topLeft        top       topRight |\n// |                                   |\n// |                                   |\n// |                                   |\n// | left          center        right |\n// |                                   |\n// |                                   |\n// |                                   |\n// | bottomLeft   bottom   bottomRight |\n//  -----------------------------------\n// clicking in the center of the element is the default\ncy.get('#action-canvas').click();\ncy.get('#action-canvas').click('topLeft');\ncy.get('#action-canvas').click('top');\ncy.get('#action-canvas').click('topRight');\ncy.get('#action-canvas').click('left');\ncy.get('#action-canvas').click('right');\ncy.get('#action-canvas').click('bottomLeft');\ncy.get('#action-canvas').click('bottom');\ncy.get('#action-canvas').click('bottomRight'); // .click() accepts an x and y coordinate\n// that controls where the click occurs :)\ncy.get('#action-canvas').click(80, 75) // click 80px on x coord and 75px on y coord\n.click(170, 75).click(80, 165).click(100, 185).click(125, 190).click(150, 185).click(170, 165); // click multiple elements by passing multiple: true\ncy.get('.action-labels>.label').click({\n  multiple: true\n}); // Ignore error checking prior to clicking\ncy.get('.action-opacity>.btn').click({\n  force: true\n});",
+              "err": {},
+              "uuid": "8971547b-7972-4538-8c52-89f4f782ee3a",
+              "parentUUID": "122824e9-8095-43bc-92ec-4ba4da5d8d02",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": ".dblclick() - double click on a DOM element",
+              "fullTitle": "Actions .dblclick() - double click on a DOM element",
+              "timedOut": null,
+              "duration": 4880,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// https://on.cypress.io/dblclick\n// Our app has a listener on 'dblclick' event in our 'scripts.js'\n// that hides the div and shows an input on double click\ncy.get('.action-navvn').dblclick().should('not.be.visible');\ncy.get('.action-input-hidden').should('be.visible');",
+              "err": {
+                "message": "AssertionError: Timed out retrying: Expected to find element: `.action-navvn`, but never found it.",
+                "estack": "AssertionError: Timed out retrying: Expected to find element: `.action-navvn`, but never found it.\n    at Context.eval (https://example.cypress.io/__cypress/tests?p=cypress/integration/examples/actions.spec.js:86:8)",
+                "diff": null
+              },
+              "uuid": "b5cfbce8-de55-4448-8694-445cfc7ac042",
+              "parentUUID": "122824e9-8095-43bc-92ec-4ba4da5d8d02",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": ".rightclick() - right click on a DOM element",
+              "fullTitle": "Actions .rightclick() - right click on a DOM element",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// https://on.cypress.io/rightclick\n// Our app has a listener on 'contextmenu' event in our 'scripts.js'\n// that hides the div and shows an input on right click\ncy.get('.rightclick-action-div').rightclick().should('not.be.visible');\ncy.get('.rightclick-action-input-hidden').should('be.visible');",
+              "err": {},
+              "uuid": "ecd4063b-ade9-4a02-843c-a43c38e5c673",
+              "parentUUID": "122824e9-8095-43bc-92ec-4ba4da5d8d02",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "cy.scrollTo() - scroll the window or element to a position",
+              "fullTitle": "Actions cy.scrollTo() - scroll the window or element to a position",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// https://on.cypress.io/scrollTo\n// You can scroll to 9 specific positions of an element:\n//  -----------------------------------\n// | topLeft        top       topRight |\n// |                                   |\n// |                                   |\n// |                                   |\n// | left          center        right |\n// |                                   |\n// |                                   |\n// |                                   |\n// | bottomLeft   bottom   bottomRight |\n//  -----------------------------------\n// if you chain .scrollTo() off of cy, we will\n// scroll the entire window\ncy.scrollTo('bottom');\ncy.get('#scrollable-horizontal').scrollTo('right'); // or you can scroll to a specific coordinate:\n// (x axis, y axis) in pixels\ncy.get('#scrollable-vertical').scrollTo(250, 250); // or you can scroll to a specific percentage\n// of the (width, height) of the element\ncy.get('#scrollable-both').scrollTo('75%', '25%'); // control the easing of the scroll (default is 'swing')\ncy.get('#scrollable-vertical').scrollTo('center', {\n  easing: 'linear'\n}); // control the duration of the scroll (in ms)\ncy.get('#scrollable-both').scrollTo('center', {\n  duration: 2000\n});",
+              "err": {},
+              "uuid": "d9ffc37e-5973-4c3c-9122-67981e858398",
+              "parentUUID": "122824e9-8095-43bc-92ec-4ba4da5d8d02",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5b06726a-2006-4e79-a0e3-86d5e6144779",
+            "372ec927-0d6d-48c0-8edf-6f691dd594a0",
+            "37a30923-5755-4436-a488-dda798817da7",
+            "0e3f3b3d-eb9d-4808-989c-25f674f01bf5",
+            "388db138-0b01-456e-a158-eee4f46db1fc",
+            "8971547b-7972-4538-8c52-89f4f782ee3a"
+          ],
+          "failures": [
+            "b5cfbce8-de55-4448-8694-445cfc7ac042"
+          ],
+          "pending": [],
+          "skipped": [
+            "ecd4063b-ade9-4a02-843c-a43c38e5c673",
+            "d9ffc37e-5973-4c3c-9122-67981e858398"
+          ],
+          "duration": 18370,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.1.1"
+    },
+    "marge": {
+      "options": {
+        "charts": false,
+        "html": true,
+        "json": true,
+        "files": [
+          "cypress/report/mochawesome-report/*.json"
+        ],
+        "overwrite": true,
+        "inline": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}
