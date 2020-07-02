@@ -18,16 +18,16 @@ describe('Bot Analytics', function() {
 		cy.waitForConfig()
 		// enter intents in preview
 		cy.xpath('//button[text()="Preview"]').click()
-		var phrases = ['hi', 'hello', 'Kakashi', 'Hatake', 'Sensei', 'Copy Ninja',
+		var phrases = ['Kakashi', 'Hatake', 'Sensei', 'Copy Ninja',
 			'kopi', 'Itachi', 'Konohamaru', 'Naruto', 'Sasuke', 'Tsunade', 'Hashirama',
 			'Madara', 'Sai', 'Sakumo', 'white fang', 'yellow flash', 'minato', 'jiraiya',
 			'shikamaru', 'yahiko', 'konan', 'nagato', 'nishinoya', 'shoyo', 'kageyama'
 		];
-
 		cy.get('[id="previewpanel"]')
 			.then(function($iframe) {
 				const $jbody = $iframe.contents().find('body')
 				const $body = $jbody[0]
+				cy.wait(10000)
 				for (var i = 0; i < phrases.length; i++) {
 					cy.wrap($body).find('.user-input_cls').type(phrases[i])
 					cy.wrap($body).find('.send-button').click()
@@ -45,6 +45,8 @@ describe('Bot Analytics', function() {
 		cy.xpath('//*[@name="search"]').type(botName + "{enter}")
 		// set last 7 days in date picker
 		cy.xpath('//*[@class="datatable-body-cell-label"]').first().click()
+
+		//cy.visit("/analytics/bots/6dbc4d05-4470-464c-ac8d-01bfb8195933/overview")
 		cy.waitUntil(() =>
 			cy
 			.get("[id='button_date']")
@@ -65,6 +67,17 @@ describe('Bot Analytics', function() {
 		cy.get('[class="datatable-icon-skip"]').click()
 		// check if the second page in unmatched phrases has this text
 		cy.xpath("//span[text()='21-25']")
+		cy.xpath("//span[text()='Overview']").click()
+		cy.waitForCalendar()
+		cy.xpath("//*[text()='Questions Asked']/..//div[contains(@class,'value')]")
+		.should('have.text',' 25 ')	
+		cy.xpath("//*[text()='Matched Intents']/..//div[contains(@class,'value')]")
+		.should('have.text',' 0 ')	
+		cy.xpath("//*[text()='Unmatched Phrases']/..//div[contains(@class,'value')]")
+		.should('have.text',' 25 ')		
+		cy.get('[id="overview-COMMON.SECTION.SESSIONS"]').should('have.text','1')	
+		cy.get('[id="overview-COMMON.SECTION.MESSAGES"]').should('have.text','25')
+
 		//delete the bot
 		cy.get('[class="bc-more-icon-round"]').click()
 		cy.xpath("//a[text()='Bot Settings']").click()
