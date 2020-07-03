@@ -3,6 +3,19 @@ require('cypress-xpath')
 var randomNumber = Math.floor(Math.random() * (999 - 100) + 100);
 var botName = "Automation_Bot_" + randomNumber;
 describe('Bot Analytics', function() {
+	after(() => {
+		//delete the bot
+		cy.get('[class="bc-more-icon-round"]').click()
+		cy.xpath("//a[text()='Bot Settings']").click()
+		cy.wait('@loadinteraction', {
+			timeout: 120000
+		})
+		cy.xpath("//h4[text()='More Settings']").click()
+		cy.get('[aria-label="deleteBot"]').click()
+		cy.get('[class="btn btn-primary"]').click()
+		cy.waitForCBLoad()
+	})
+
 	it('Create bot - check matched and unmatched intents', function() {
 		// login 
 		cy.login();
@@ -70,25 +83,13 @@ describe('Bot Analytics', function() {
 		cy.xpath("//span[text()='Overview']").click()
 		cy.waitForCalendar()
 		cy.xpath("//*[text()='Questions Asked']/..//div[contains(@class,'value')]")
-		.should('have.text',' 25 ')	
+			.should('have.text', ' 26 ')
 		cy.xpath("//*[text()='Matched Intents']/..//div[contains(@class,'value')]")
-		.should('have.text',' 0 ')	
+			.should('have.text', ' 1 ')
 		cy.xpath("//*[text()='Unmatched Phrases']/..//div[contains(@class,'value')]")
-		.should('have.text',' 25 ')		
-		cy.get('[id="overview-COMMON.SECTION.SESSIONS"]').should('have.text','1')	
-		cy.get('[id="overview-COMMON.SECTION.MESSAGES"]').should('have.text','25')
-
-		//delete the bot
-		cy.get('[class="bc-more-icon-round"]').click()
-		cy.xpath("//a[text()='Bot Settings']").click()
-		cy.wait('@loadinteraction', {
-			timeout: 120000
-		})
-		cy.xpath("//h4[text()='More Settings']").click()
-		cy.get('[aria-label="deleteBot"]').click()
-		cy.get('[class="btn btn-primary"]').click()
-		cy.waitForCBLoad()
+			.should('have.text', ' 25 ')
+		cy.get('[id="overview-COMMON.SECTION.SESSIONS"]').should('have.text', '1')
+		cy.get('[id="overview-COMMON.SECTION.MESSAGES"]').should('have.text', '26')
 
 	})
-
 })
