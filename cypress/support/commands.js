@@ -130,10 +130,30 @@ Cypress.Commands.add('waitForVendorCred',()=>{
 
 Cypress.Commands.add('waitForTrain',()=>{
 	cy.route({
-		method:'POST',
-		url:'/bot-platform-manager-0.1/domain/model/train'
+		method:'GET',
+		url:'/bot-platform-manager-0.1/domainModelVersion*'
 	}).as('train')
 	cy.wait('@train', {
+		timeout: 120000		
+	})
+})
+
+Cypress.Commands.add('domainDeleteWait',()=>{
+	cy.route({
+		method:'DELETE',
+		url:'/bot-platform-manager-0.1/domain*'
+	}).as('domain_del')
+	cy.wait('@domain_del', {
+		timeout: 120000		
+	})
+})
+
+Cypress.Commands.add('waitForCreds',()=>{
+	cy.route({
+		method:'GET',
+		url:'/auth-service-0.1/credentials'
+	}).as('cred')
+	cy.wait('@cred', {
 		timeout: 120000		
 	})
 })

@@ -1,8 +1,8 @@
 {
-  "apikey": "iii6o81cve9J018XSsOQyQfqrlv5P6g4nhhI1TPuzljz",
-  "iam_apikey_description": "Auto-generated for key 880ac216-810e-4c97-808f-4199a980e694",
+  "apikey": "LWxrxUjPvRlQv3qBRvaVasoTOJ7Zmv04QoL0gEqV-ZoL",
+  "iam_apikey_description": "Auto-generated for key 16bbfce0-b718-4176-8d84-e2bb5ab12b25",
   "iam_apikey_name": "Test-Cred-DonotDelete",
   "iam_role_crn": "crn:v1:bluemix:public:iam::::serviceRole:Manager",
-  "iam_serviceid_crn": "crn:v1:bluemix:public:iam-identity::a/bf2028893e2f4df48e7bce1476db443d::serviceid:ServiceId-c8e34387-aefd-4ccf-89d0-83a8b4abc449",
-  "url": "https://api.eu-gb.assistant.watson.cloud.ibm.com/instances/fa2016ff-cee3-405f-acf3-f23039cb64e5"
+  "iam_serviceid_crn": "crn:v1:bluemix:public:iam-identity::a/cf5f873f6e5944f4bac6c32e23d3b902::serviceid:ServiceId-226c41c3-34dc-411d-a6aa-047cf2a40ea5",
+  "url": "https://api.eu-gb.assistant.watson.cloud.ibm.com/instances/f0168227-be36-47e2-91cf-0377a8251604"
 }
