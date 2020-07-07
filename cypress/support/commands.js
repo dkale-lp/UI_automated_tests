@@ -25,6 +25,8 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 import 'cypress-wait-until';
+import 'cypress-file-upload';
+
 
 Cypress.Commands.add("login", () => {
 	cy.server()
@@ -48,12 +50,13 @@ Cypress.Commands.add("login", () => {
 Cypress.Commands.add("waitForDataAnalyticsToLoad", (settimeout) => {
 	cy.route({
 		method: 'GET',
-		url: '/bot-platform-manager-0.1/chatbots',
+		url: '/bot-platform-manager-0.1/auth/analytics/**',
 	}).as('chatbot')
 	cy.wait('@chatbot', {
 		timeout: settimeout
 	})
 });
+
 
 Cypress.Commands.add('waitForCBLoad', ()=> {
 	cy.route({
@@ -94,3 +97,43 @@ Cypress.Commands.add('waitForCalendar',()=>{
 	})
 })
 
+Cypress.Commands.add('waitForIntentBuilderHP',()=>{
+	cy.route({
+		method:'GET',
+		url:'/bot-platform-manager-0.1/domain/getByOrgId'
+	}).as('config')
+	cy.wait('@config', {
+		timeout: 120000		
+	})
+})
+
+Cypress.Commands.add('createDomainWait',()=>{
+	cy.route({
+		method:'GET',
+		url:'/bot-platform-manager-0.1/intent/domain/**'
+	}).as('domain')
+	cy.wait('@domain', {
+		timeout: 120000		
+	})
+})
+
+Cypress.Commands.add('waitForVendorCred',()=>{
+	cy.route({
+		method:'GET',
+		url:'/auth-service-0.1/credentials/**'
+	}).as('credprov')
+	cy.wait('@credprov', {
+		timeout: 120000		
+	})
+})
+
+
+Cypress.Commands.add('waitForTrain',()=>{
+	cy.route({
+		method:'POST',
+		url:'/bot-platform-manager-0.1/domain/model/train'
+	}).as('train')
+	cy.wait('@train', {
+		timeout: 120000		
+	})
+})
