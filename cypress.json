@@ -13,7 +13,7 @@
 		"html": true,
 		"json": true,
 		"reportDir": "cypress/report/mochawesome-report",
-		"overwrite": true,
+		"overwrite": false,
 		"inline": true
 	}
 }
