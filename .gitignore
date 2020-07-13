@@ -1,2 +1,3 @@
-
+#report module
+cypress/report/mochawesome-report/
 node_modules/
