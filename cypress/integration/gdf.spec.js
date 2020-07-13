@@ -7,7 +7,7 @@ var watsonCred = 'google_cred.txt'
 var randomNumber = Math.floor(Math.random() * (999 - 100) + 100);
 var domainName = "Automation_Domain_" + randomNumber;
 var credName = "Automation_Cred_" + randomNumber
-describe('Wastson Assistant check', function() {
+describe('GDF check', function() {
 	it('Create bot - check matched and unmatched intents', function() {
 		// login 
 		cy.login();
