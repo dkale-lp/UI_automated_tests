@@ -66,6 +66,10 @@ rm(reportFiles, (error) => {
         inline: config.reporterOptions.inline,
     }
     await generateReport(reporterOptions)
+    var totalFailedCase = JSON.parse(JSON.stringify(results));
+    count = totalFailedCase.totalFailed;
+    console.log("=====================" + count)
+    process.exit(count)
 
 }).catch((error) => {
     console.error('errors: ', error)
