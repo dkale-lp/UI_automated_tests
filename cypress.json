@@ -5,7 +5,7 @@
 	"pluginsFile": "cypress/plugins/index.js",
 	"screenshotsFolder": "cypress/report/screenshots/",
 	"supportFile": "cypress/support/index.js",
-	"baseUrl": "https://va-a.botplatform.liveperson.net/#",
+	"baseUrl": "https://stagingplatform.botcentralai.com/#",
 	"reporter": "mochawesome",
 	"pageLoadTimeout":180000,
 	"reporterOptions": {
