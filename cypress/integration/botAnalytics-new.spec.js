@@ -88,7 +88,7 @@ describe('Bot Analytics', function() {
 		cy.xpath("//*[text()='Questions Asked']/..//div[contains(@class,'value')]")
 			.should('have.text', ' 25 ')
 		cy.xpath("//*[text()='Matched Intents']/..//div[contains(@class,'value')]")
-			.should('have.text', ' 0	 ')
+			.should('have.text', ' 0 ')
 		cy.xpath("//*[text()='Unmatched Phrases']/..//div[contains(@class,'value')]")
 			.should('have.text', ' 25 ')
 		cy.get('[id="overview-COMMON.SECTION.SESSIONS"]').should('have.text', '1')
