@@ -23,7 +23,7 @@ describe('Bot Analytics', function() {
 		cy.waitForCBLoad()
 		//create bot
 		cy.get('[id="bna-create-bot"]').click()
-		cy.wait(5000)
+		cy.wait(10000)
 		cy.get('[id="bc-cb-bot-template-basics-Custom Bot"]').click()
 		cy.get('[id="createbot_btn-save"]').click()
 		cy.get('[name="name"]').type(botName)

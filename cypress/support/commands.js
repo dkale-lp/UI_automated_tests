@@ -57,6 +57,36 @@ Cypress.Commands.add("waitForDataAnalyticsToLoad", (settimeout) => {
 	})
 });
 
+Cypress.Commands.add("waitForAgentConnector", () => {
+	cy.route({
+		method: 'POST',
+		url: '/bot-platform-manager-0.1/auth/log/**',
+	}).as('agentconnector')
+	cy.wait('@agentconnector', {
+		timeout: 120000
+	})
+});
+
+Cypress.Commands.add("deployInDemo", () => {
+	cy.route({
+		method: 'PUT',
+		url: '/https://va-a.bc-mgmt.liveperson.net/service-monitoring-0.1/sysadmin/nodejs/instance/assignServer/**',
+	}).as('demo')
+	cy.wait('@demo', {
+		timeout: 120000
+	})
+});
+
+
+Cypress.Commands.add("waitForAccountToLoad", () => {
+	cy.route({
+		method: 'GET',
+		url: '/live-engage-service-0.1/le/accounts/**',
+	}).as('accounts')
+	cy.wait('@accounts', {
+		timeout: 120000
+	})
+});
 
 Cypress.Commands.add('waitForCBLoad', ()=> {
 	cy.route({
@@ -154,6 +184,26 @@ Cypress.Commands.add('waitForCreds',()=>{
 		url:'/auth-service-0.1/credentials'
 	}).as('cred')
 	cy.wait('@cred', {
+		timeout: 120000		
+	})
+})
+
+Cypress.Commands.add('botDeleteWait',()=>{
+	cy.route({
+		method:'DELETE',
+		url:'/bot-platform-manager-0.1/bots/*'
+	}).as('bot_del')
+	cy.wait('@bot_del', {
+		timeout: 120000		
+	})
+})
+
+Cypress.Commands.add('agentDeleteWait',()=>{
+	cy.route({
+		method:'DELETE',
+		url:'/bot-platform-manager-0.1/auth/liveperson/app/*'
+	}).as('agent_del')
+	cy.wait('@agent_del', {
 		timeout: 120000		
 	})
 })
