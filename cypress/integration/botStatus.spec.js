@@ -8,8 +8,8 @@ var botName = "Automation_Bot_" + randomNumber;
 
 var domainName = "Automation_Domain_" + randomNumber;
 var credName = "Automation_Cred_" + randomNumber
-describe('GDF check', function() {
-	it('Create bot - check matched and unmatched intents', function() {
+describe('Bot Status', function() {
+	it('Check bot status', function() {
 		// login 
 		cy.login();
         cy.viewport(1280, 720)
