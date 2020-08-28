@@ -30,7 +30,7 @@ describe('Bot Analytics', function() {
 		cy.xpath('//textarea[@name="description"]').type('Automation_Bot_Desc')
 		cy.get('[id="createbot_btn-save"]').click()
 		cy.waitForInteraction().its('status').should('eq', 200)
-		cy.waitForConfig()
+		cy.waitForIntentBuilderHP()
 		// enter intents in preview
 		cy.xpath('//button[text()="Preview"]').click()
 		var phrases = ['Kakashi', 'Hatake', 'Sensei', 'Copy Ninja',
