@@ -58,7 +58,7 @@ Cypress.Commands.add("waitForDataAnalyticsToLoad", (settimeout) => {
 Cypress.Commands.add('waitForCBLoad', ()=> {
 	cy.route({
 		method:'GET',
-		url:'bot-platform-manager-0.1/chatbots?filterByTransferGroup=true'
+		url:'bot-platform-manager-0.1/chatbots'
 	}).as('cbWait')
 	cy.wait('@cbWait', {
 		timeout: 120000
@@ -78,7 +78,7 @@ Cypress.Commands.add('waitForInteraction',()=>{
 Cypress.Commands.add('waitForConfig',()=>{
 	cy.route({
 		method:'GET',
-		url:'botservice-0.1/botcentral/debugger/*'
+		url:'bot-platform-manager-0.1/domain/getByOrgId'
 	}).as('config')
 	cy.wait('@config', {
 		timeout: 120000		
