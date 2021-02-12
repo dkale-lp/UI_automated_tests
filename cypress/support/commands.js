@@ -40,7 +40,7 @@ Cypress.Commands.add("login", () => {
 	}).as('login')
 	cy.route({
 		method: 'GET',
-		url: '/bot-platform-manager-0.1/botLanguage/'
+		url: '/bot-platform-manager-0.1/nluProviderLanguage/'
 	}).as('botLanguage')
 	cy.wait('@botLanguage', {
 		timeout: 180000

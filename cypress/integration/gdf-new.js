@@ -14,6 +14,7 @@ describe('GDF check', function() {
 		cy.xpath("//h3[text()='Intent Builder']").click()
 		cy.waitForIntentBuilderHP()
 		cy.xpath('//a//span[text()="Add Domain"]').click()
+		cy.wait(1000)
 		cy.get('[id="domain-form_input-field-name-label"]').type(domainName)
 		cy.get('[id="domain-form_radio-field-import"]').click()
 		cy.get('[id="domain-form_radio-field-csv"]').click()
